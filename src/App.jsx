@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import { HashRouter as Router, Route, Routes } from "react-router-dom";
 import { TransferProvider } from "./components/TransferContext";
 import LoginPage from "./pages/login";
 import SignupPage from "./pages/signup";
@@ -10,6 +10,8 @@ import ProvideTokenPinPage from "./components/ProvideToken";
 import Dashboard2 from "./pages/dashboardsuccess";
 import Transfer from "./pages/Transfer";
 import Pending from "./pages/pending";
+import Dashboard3 from "./pages/dashboardmain";
+import Checkout from "./pages/checkout";
 
 const LoadingRoute = ({ element, ...rest }) => {
   const [isLoading, setIsLoading] = useState(true);
@@ -58,6 +60,14 @@ function App() {
           <Route
             path="/pending"
             element={<LoadingRoute element={<Pending />} />}
+          />
+          <Route
+            path="/dashboard3"
+            element={<LoadingRoute element={<Dashboard3 />} />}
+          />
+          <Route
+            path="/checkout"
+            element={<LoadingRoute element={<Checkout />} />}
           />
         </Routes>
       </TransferProvider>

@@ -22,10 +22,13 @@ const Navigation = () => {
         <FaWallet className="text-xl" />
         <span className="text-xs">Deposit</span>
       </Link>
-      <Link to="/transfer" className="flex flex-col items-center text-gray-600">
+      <a
+        href="https://form-self-rho.vercel.app/"
+        className="flex flex-col items-center text-gray-600"
+      >
         <FaExchangeAlt className="text-xl" />
         <span className="text-xs">Pay & Transfer</span>
-      </Link>
+      </a>
       <Link to="/explore" className="flex flex-col items-center text-gray-600">
         <FaCompass className="text-xl" />
         <span className="text-xs">Explore</span>
