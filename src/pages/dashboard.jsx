@@ -42,7 +42,7 @@ const FinancialDashboard = () => {
           className="block bg-white p-4 rounded-lg shadow-md hover:shadow-lg"
         >
           <h2 className="text-gray-800 font-semibold">SAVINGS ...2652</h2>
-          <p className="text-2xl font-bold text-green-600">£867,653.77</p>
+          <p className="text-2xl font-bold text-green-600">£867,533.77</p>
           <p className="text-sm text-gray-600">Available balance</p>
           <div className="mt-2 bg-red-50 p-3 rounded-md text-sm text-red-600 flex items-start gap-2">
             <span className="text-xl">⚠️</span>

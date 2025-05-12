@@ -19,6 +19,38 @@ const SavingsPage = () => {
   // Your existing allTransactions array stays the same
   const allTransactions = [
     {
+      date: "04/12/2025",
+      description: "SALARY RCV FROM IBERIA AIRLINES",
+      amount: "+$28,550.00",
+      isPositive: true,
+      reference: "REF567890",
+      status: "Successful",
+    },
+    {
+      date: "04/18/2025",
+      description: "REIMBURSEMENT FOR MARCH",
+      amount: "+$32,000.00",
+      isPositive: true,
+      reference: "REF567527",
+      status: "Successful",
+    },
+    {
+      date: "04/23/2025",
+      description: "SENT TO US DEPARTMENT OF STATE",
+      amount: "-$100,000.00",
+      isPositive: false,
+      reference: "REF2655546",
+      status: "Successful",
+    },
+    {
+      date: "04/26/2025",
+      description: "ACCOUNT MAINTENACE FEE",
+      amount: "-£50.00",
+      isPositive: false,
+      reference: "REF2655557",
+      status: "Successful",
+    },
+    {
       date: "01/31/2025",
       description: "ACCOUNT MAINTENANCE FEE",
       amount: "-£50.00",
@@ -53,10 +85,10 @@ const SavingsPage = () => {
     {
       date: "01/18/2025",
       description: "PURCHASE AT ROLEX",
-      amount: "-4,850.14",
+      amount: "-7,650.00",
       isPositive: false,
       reference: "REF789012",
-      status: "Failed",
+      status: "Successful",
     },
     {
       date: "01/16/2025",
