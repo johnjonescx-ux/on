@@ -38,7 +38,7 @@ const Dashboard3 = () => {
       <main className="px-4 py-6 space-y-4">
         {/* Account Card */}
         <a
-          href="https://hscb.vercel.app/"
+          href="/"
           target="_blank"
           rel="noopener noreferrer"
           className="block bg-white p-4 rounded-lg shadow-md hover:shadow-lg"

