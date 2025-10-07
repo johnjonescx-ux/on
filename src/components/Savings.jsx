@@ -300,7 +300,7 @@ const SavingsPage = () => {
             <h2 className="text-lg font-semibold text-gray-700">
               SAVINGS ...2652
             </h2>
-            <p className="text-4xl font-bold text-green-600">£867,653.77</p>
+            <p className="text-4xl font-bold text-green-600">£1,167,653.77</p>
             <p className="text-sm text-gray-600">Available balance</p>
           </div>
           {/* Alert Box */}
@@ -387,3 +387,4 @@ const SavingsPage = () => {
 };
 
 export default SavingsPage;
+
